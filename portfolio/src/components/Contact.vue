@@ -124,7 +124,7 @@ export default {
 
 <style>
 #contactContainer {
-  min-height: 700px;
+  min-height: 0px;
 }
 
 #card {

@@ -1,14 +1,19 @@
 <template>
   <v-container id="aboutContainer" fluid>
-    <div class="aboutTitle">About Me</div>
 
-
-
-
-
-    <v-btn x-large icon @click="resumeOpen=true;">
+    <v-row>
+      <v-col style="max-width: 30%;">
+        <v-img aspect-ratio="1" class="profilePicture" src="../assets/ScottBot.jpg"></v-img>
+      </v-col>
+      <v-col style="margin-left: 20px; margin-top: 30px;">
+        <div class="aboutScott">About Scott</div>
+        <div style="display: inline-block;">hi</div>
+            <v-btn x-large icon @click="resumeOpen=true;">
       <v-icon>mdi-file-document</v-icon>
     </v-btn>
+      </v-col>
+    </v-row>
+
 
 
     
@@ -16,8 +21,14 @@
 
 
     <!-- PDF Preview -->
-    <v-dialog style="z-index: 1000;" overflowed v-model="resumeOpen" max-width="1000">
-      <span class="downloadButton">
+    <v-dialog
+      id="dialog"
+      style="z-index: 1000;" 
+      overflowed 
+      v-model="resumeOpen" 
+      max-width="1000"
+    >
+      <span class="downloadButton" v-scroll:#dialog="onScroll">
         <v-btn @click="downloadResume()" :x-large="largeIcon" :small="!largeIcon" icon>
           <v-icon>mdi-download</v-icon>
         </v-btn>
@@ -40,7 +51,8 @@ export default {
   data() {
     return {
       resumeOpen: false,
-      largeIcon: undefined
+      largeIcon: undefined,
+      showIcon: true
     }
   },
   mounted() {
@@ -57,6 +69,14 @@ export default {
       link.href = './ScottNortonResume.pdf';
       link.download = 'ScottNortonResume.pdf';
       link.dispatchEvent(new MouseEvent('click'));
+    },
+    onScroll(e) {
+      if (e.offsetTop > 0) {
+        this.showIcon = false;
+      }
+      else {
+        this.showIcon = true;
+      }
     }
   }
 }
@@ -64,15 +84,17 @@ export default {
 
 <style>
 #aboutContainer {
-  height: 500px;
+  margin-left: 30px;
+  height: 100vh;
 }
 
-.aboutTitle {
-  font-size: 45px;
-  text-align: center;
-  padding-left: 15px;
+.profilePicture {
+  border-radius: 100%;
 }
 
+.aboutScott {
+  font-size: 32px;
+}
 
 .downloadButton {
   padding-top: 10px;

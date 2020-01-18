@@ -2,9 +2,9 @@
   <v-container id="portfolioContainer" fluid>
     <v-app-bar :fixed="this.fixed" dark color="#485461" id="toolbar">
       <!-- Mobile -->
-      <v-spacer v-if="collapse"></v-spacer>
-      <v-toolbar-title v-if="collapse">Scott Norton</v-toolbar-title>
-      <v-menu v-if="collapse" bottom right offset-x>
+      <v-spacer v-if="$vuetify.breakpoint.smAndDown"></v-spacer>
+      <v-toolbar-title v-if="$vuetify.breakpoint.smAndDown">Scott Norton</v-toolbar-title>
+      <v-menu v-if="$vuetify.breakpoint.smAndDown" bottom right offset-x>
         <template v-slot:activator="{ on }">
           <v-btn dark icon v-on="on" style="position: absolute; right: 16px;">
             <v-icon>mdi-menu</v-icon>
@@ -20,8 +20,8 @@
       </v-menu>
 
       <!-- Desktop -->
-      <v-spacer v-if="!collapse"></v-spacer>
-      <v-toolbar-items id="toolbar-items" v-if="!collapse">
+      <v-spacer v-if="!$vuetify.breakpoint.smAndDown"></v-spacer>
+      <v-toolbar-items id="toolbar-items" v-if="!$vuetify.breakpoint.smAndDown">
         <v-btn text @click="scrollTo('home')">Home</v-btn>
         <v-btn text @click="scrollTo('aboutContainer')">About</v-btn>
         <v-btn text @click="scrollTo('expContainer')">Experience</v-btn>
@@ -58,7 +58,6 @@ export default {
       fixed: false,
       threshold: undefined,
       toolbarHeight: undefined,
-      collapse: false,
       scrollOptions : { }
     }
   },
@@ -71,14 +70,6 @@ export default {
   mounted () {
     this.threshold = document.getElementById('container').offsetHeight;
     this.toolbarHeight = document.getElementById('toolbar').offsetHeight;
-    let toolbarItemsWidth = document.getElementById('toolbar-items').offsetWidth;
-    if (toolbarItemsWidth >= window.innerWidth) {
-      this.collapse = true;
-    }
-    else {
-      this.collapse = false;
-    }
-    window.addEventListener('resize', this.onResize);
   },
   methods: {
     scrollTo(target) {
@@ -90,21 +81,12 @@ export default {
         let position = y - this.toolbarHeight;
         this.$vuetify.goTo(position, this.scrollOptions);
       }
-
     },
+    // in case screen was resized
     checkScroll() {
-      this.threshold = document.getElementById('container').offsetHeight;  // in case screen was resized
+      this.threshold = document.getElementById('container').offsetHeight;
       this.fixed = window.scrollY >= this.threshold;
-      this.toolbarHeight = document.getElementById('toolbar').offsetHeight; // in case screen was resized
-    },
-    onResize() {
-      let toolbarItemsWidth = document.getElementById('toolbar-items').offsetWidth;
-      if (toolbarItemsWidth >= window.innerWidth) {
-        this.collapse = true;
-      }
-      else {
-        this.collapse = false;  // not working
-      }
+      this.toolbarHeight = document.getElementById('toolbar').offsetHeight;
     }
   },
   computed: {

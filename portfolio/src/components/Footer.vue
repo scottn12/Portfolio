@@ -29,5 +29,7 @@ export default {
   background-color: #28313b;
   color: white;
   text-align: center;
+  margin-top: 15px;
+  padding-top: 0;
 }
 </style>
