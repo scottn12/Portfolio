@@ -45,9 +45,6 @@ export default {
 </script>
 
 <style>
-#projectsContainer {
-}
-
 .projectsTitle {
   font-size: 45px;
   text-align: center;

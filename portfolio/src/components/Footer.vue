@@ -26,7 +26,8 @@ export default {
 
 <style>
 #footerContainer {
-  background-color: #28313b;
+  /* background-color: #28313b; */
+  background-color: #485461;
   color: white;
   text-align: center;
   margin-top: 15px;

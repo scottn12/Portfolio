@@ -2,9 +2,9 @@
   <v-container id="portfolioContainer" fluid>
     <v-app-bar :fixed="this.fixed" dark color="#485461" id="toolbar">
       <!-- Mobile -->
-      <v-spacer v-if="$vuetify.breakpoint.smAndDown"></v-spacer>
-      <v-toolbar-title v-if="$vuetify.breakpoint.smAndDown">Scott Norton</v-toolbar-title>
-      <v-menu v-if="$vuetify.breakpoint.smAndDown" bottom right offset-x>
+      <v-spacer v-if="$vuetify.breakpoint.xsOnly"></v-spacer>
+      <v-toolbar-title v-if="$vuetify.breakpoint.xsOnly">Scott Norton</v-toolbar-title>
+      <v-menu v-if="$vuetify.breakpoint.xsOnly" bottom right offset-x>
         <template v-slot:activator="{ on }">
           <v-btn dark icon v-on="on" style="position: absolute; right: 16px;">
             <v-icon>mdi-menu</v-icon>
@@ -20,8 +20,8 @@
       </v-menu>
 
       <!-- Desktop -->
-      <v-spacer v-if="!$vuetify.breakpoint.smAndDown"></v-spacer>
-      <v-toolbar-items id="toolbar-items" v-if="!$vuetify.breakpoint.smAndDown">
+      <v-spacer v-if="!$vuetify.breakpoint.xsOnly"></v-spacer>
+      <v-toolbar-items id="toolbar-items" v-if="!$vuetify.breakpoint.xsOnly">
         <v-btn text @click="scrollTo('home')">Home</v-btn>
         <v-btn text @click="scrollTo('aboutContainer')">About</v-btn>
         <v-btn text @click="scrollTo('expContainer')">Experience</v-btn>

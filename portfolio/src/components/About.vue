@@ -7,18 +7,12 @@
       </v-col>
       <v-col style="margin-left: 20px; margin-top: 30px;">
         <div class="aboutScott">About Scott</div>
-        <div style="display: inline-block;">hi</div>
+        <div class="mainText">wew</div>
             <v-btn x-large icon @click="resumeOpen=true;">
       <v-icon>mdi-file-document</v-icon>
     </v-btn>
       </v-col>
     </v-row>
-
-
-
-    
-
-
 
     <!-- PDF Preview -->
     <v-dialog
@@ -28,8 +22,8 @@
       v-model="resumeOpen" 
       max-width="1000"
     >
-      <span class="downloadButton" v-scroll:#dialog="onScroll">
-        <v-btn @click="downloadResume()" :x-large="largeIcon" :small="!largeIcon" icon>
+      <span class="downloadButton">
+        <v-btn @click="downloadResume()" :x-large="!$vuetify.breakpoint.xsOnly" :small="$vuetify.breakpoint.xsOnly" icon>
           <v-icon>mdi-download</v-icon>
         </v-btn>
       </span>
@@ -50,17 +44,7 @@ export default {
   },
   data() {
     return {
-      resumeOpen: false,
-      largeIcon: undefined,
-      showIcon: true
-    }
-  },
-  mounted() {
-    if (1000 >= window.innerWidth) {
-      this.largeIcon = false;
-    }
-    else {
-      this.largeIcon = true;
+      resumeOpen: false
     }
   },
   methods: {
@@ -69,14 +53,6 @@ export default {
       link.href = './ScottNortonResume.pdf';
       link.download = 'ScottNortonResume.pdf';
       link.dispatchEvent(new MouseEvent('click'));
-    },
-    onScroll(e) {
-      if (e.offsetTop > 0) {
-        this.showIcon = false;
-      }
-      else {
-        this.showIcon = true;
-      }
     }
   }
 }
@@ -85,7 +61,6 @@ export default {
 <style>
 #aboutContainer {
   margin-left: 30px;
-  height: 100vh;
 }
 
 .profilePicture {

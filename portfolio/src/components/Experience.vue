@@ -5,7 +5,7 @@
       <v-timeline-item
         v-for="(item, i) in items"
         :key="i"
-        :color="item.color"
+        color="#28313b"
         :icon="item.icon"
         fill-dot
         large
@@ -16,7 +16,7 @@
             v-text="item.time"
           ></span>
         </template>
-        <v-card :color="item.color" dark>
+        <v-card color="#485461" dark>
           <v-card-title class="title">{{ item.title }}</v-card-title>
           <v-card-text class="white text--primary" style="padding-top: 10px; padding-bottom: 10px;">
             <p style="margin-bottom: 0;">{{ item.description }}</p>
