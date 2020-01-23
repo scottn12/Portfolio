@@ -1,16 +1,21 @@
 <template>
   <v-container id="expContainer" fluid>
     <div class="expTitle">Experience</div>
-    <div style="text-align: center;">
-      <v-tooltip left>
-        <template v-slot:activator="{on}">
-          <v-btn class="mx-2" color="#28313b" fab dark x-large v-on="on" @click="resumeOpen=true;">
-            <v-icon>mdi-file-document</v-icon>
-          </v-btn>
-        </template>
-        <span>Resumé</span>
-      </v-tooltip>
+
+    <!-- Desktop Resume Button -->
+    <div v-if="!$vuetify.breakpoint.xsOnly" style="text-align: center;">
+      <v-btn color="#28313b" x-large dark @click="resumeOpen=true;">
+        Full Resumé
+      </v-btn>
     </div>
+    <!-- Mobile Desktop Button -->
+    <div v-if="$vuetify.breakpoint.xsOnly" style="text-align: left; margin-left: 4px;">
+      <v-btn class="mx-2" color="#28313b" fab dark x-large @click="resumeOpen=true;">
+        <v-icon>mdi-file-document</v-icon>
+      </v-btn>
+      <span style="margin-left: 10px; font-size: 22px;">Full Resumé</span>
+    </div>
+
     <v-timeline :dense="$vuetify.breakpoint.smAndDown">
       <!-- General Cards -->
       <v-timeline-item
@@ -164,6 +169,7 @@ export default {
 .expTitle {
   font-size: 45px;
   text-align: center;
+  padding-bottom: 12px;
 }
 
 .time {

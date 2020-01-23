@@ -116,8 +116,6 @@ export default {
         this.loading = false;
         return;  // no send
       }
-      document.cookie = 'emailSent=true; expires=(datetime + 1day)';  // Mark email sent
-
       var data = new FormData();
       data.append('email', email);
       data.append('subject', subject);
@@ -131,6 +129,7 @@ export default {
         this.loading = false;
         if (response.success) {
           this.success = true;
+          document.cookie = 'emailSent=true; expires=(datetime + 1day)';  // Mark email sent
         }
         else {
           this.error = true;
