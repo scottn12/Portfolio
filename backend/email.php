@@ -9,11 +9,11 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     exit();
 }
 
-const TO_EMAIL = 'scott.norton12@gmail.com';
+const TO_EMAIL = '<TO_EMAIL>';
 
 // Get info from request
 $fromEmail = $_POST['email'];
-$subject = 'From scottnorton.tech: ' . $_POST['subject'];
+$subject = $_POST['subject'] . '(scott.norton.tech)';
 $msg = $_POST['message'];
 
 $headers = 'From: ' . $fromEmail;

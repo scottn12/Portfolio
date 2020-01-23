@@ -122,7 +122,7 @@ export default {
       data.append('email', email);
       data.append('subject', subject);
       data.append('message', message);
-      fetch('http://scottnorton.tech/email.php', {
+      fetch('https://scottnorton.tech/email.php', {
         method: 'POST',
         body: data
       })
