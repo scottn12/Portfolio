@@ -18,8 +18,10 @@
           </div>
         </transition>
         <div class="iconHolder" v-if="!showIcons">
-          <v-btn large style="margin-right: 10px;"><v-icon color="white">mdi-github-circle</v-icon></v-btn>
-          <v-btn large icon><v-icon color="white">mdi-linkedin-box</v-icon></v-btn>
+          <div style="visibility: hidden;" class="icons" v-if="!showIcons">
+            <v-btn icon href="https://github.com/scottn12" target="_blank" style="margin-right: 10px;"><v-icon x-large color="white">mdi-github-circle</v-icon></v-btn>
+            <v-btn icon href="https://www.linkedin.com/in/scott-norton/" target="_blank"><v-icon x-large color="white">mdi-linkedin-box</v-icon></v-btn>
+          </div>
         </div>
         <div class="downIcons">
           <transition name="fadeFast">
@@ -101,7 +103,7 @@ export default {
 }
 
 .iconHolder {
-  visibility: hidden;
+  width: 100%;
 }
 
 .fade-enter-active, .fade-leave-active {

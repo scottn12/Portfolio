@@ -13,7 +13,7 @@ const TO_EMAIL = 'scott.norton12@gmail.com';
 
 // Get info from request
 $fromEmail = $_POST['email'];
-$subject = $_POST['subject'];
+$subject = 'From scottnorton.tech: ' . $_POST['subject'];
 $msg = $_POST['message'];
 
 $headers = 'From: ' . $fromEmail;

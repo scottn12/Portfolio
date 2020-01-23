@@ -1,6 +1,6 @@
 <template>
   <v-container id="contactContainer" fluid>    
-    <v-card class="mx-auto" max-width="800px" id="card">
+    <v-card class="mx-auto" max-width="900px" id="card">
       <v-overlay :value="loading" absolute>
         <v-progress-circular indeterminate size="64"></v-progress-circular>
       </v-overlay>

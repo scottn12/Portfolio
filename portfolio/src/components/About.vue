@@ -1,81 +1,88 @@
 <template>
   <v-container id="aboutContainer" fluid>
-
-    <v-row>
+    <!-- Desktop -->
+    <v-row v-if="!$vuetify.breakpoint.xsOnly" align="center">
       <v-col style="max-width: 30%;">
-        <v-img aspect-ratio="1" class="profilePicture" src="../assets/ScottBot.jpg"></v-img>
+        <v-img aspect-ratio="1" class="profilePicture" src="../assets/profilepic.jpg"></v-img>
       </v-col>
-      <v-col style="margin-left: 20px; margin-top: 30px;">
-        <div class="aboutScott">About Scott</div>
-        <div class="mainText">wew</div>
-            <v-btn x-large icon @click="resumeOpen=true;">
-      <v-icon>mdi-file-document</v-icon>
-    </v-btn>
+      <v-col style="padding-left: 30px; padding-top: 40px;">
+        <div class="aboutHeader">
+          About Scott
+        </div>
+        <div class="mainText">
+          I am a software engineer experienced in full stack web development and object-oriented programming.
+          <br>
+          I love to learn about and implement new techonologies, as well as design and develop applications to help people.
+        </div>
+        <!-- <div class="skillsTitle">Skills</div>
+        <v-row>
+          <v-col>Programming Languages</v-col>
+          <v-col>Front-End Frameworks</v-col>
+          <v-col>Back-End Frameworks</v-col>
+          <v-col>Other</v-col>
+        </v-row> -->
       </v-col>
     </v-row>
-
-    <!-- PDF Preview -->
-    <v-dialog
-      id="dialog"
-      style="z-index: 1000;" 
-      overflowed 
-      v-model="resumeOpen" 
-      max-width="1000"
-    >
-      <span class="downloadButton">
-        <v-btn @click="downloadResume()" :x-large="!$vuetify.breakpoint.xsOnly" :small="$vuetify.breakpoint.xsOnly" icon>
-          <v-icon>mdi-download</v-icon>
-        </v-btn>
-      </span>
-      <pdf style="display:inline-block" src="./ScottNortonResume.pdf"></pdf>
-    </v-dialog>
+    
+    <!-- Mobile -->
+    <div v-if="$vuetify.breakpoint.xsOnly" class="mobileContainer">
+      <v-img style="max-width: 100%;" aspect-ratio="1" class="profilePicture" src="../assets/profilepic.jpg"></v-img>
+      <div class="aboutHeaderMobile">About Scott</div>
+      <div class="mainText">
+        I am a software engineer experienced in full stack web development and object-oriented programming.
+        <br>
+        I love to learn about and implement new techonologies, as well as design and develop applications to help people.
+      </div>
+      <!-- <div class="skillsTitle">Skills</div>
+      <v-row>
+        <v-col>Programming Languages</v-col>
+        <v-col>Front-End Frameworks</v-col>
+        <v-col>Back-End Frameworks</v-col>
+        <v-col>Other</v-col>
+      </v-row> -->
+    </div>
   </v-container>
 </template>
 
 <script>
-import pdf from 'vue-pdf';
 export default {
   name: 'About',
   props: {
     source: String,
-  },
-  components: {
-    pdf
-  },
-  data() {
-    return {
-      resumeOpen: false
-    }
-  },
-  methods: {
-    downloadResume() {
-      let link = document.createElement('a');
-      link.href = './ScottNortonResume.pdf';
-      link.download = 'ScottNortonResume.pdf';
-      link.dispatchEvent(new MouseEvent('click'));
-    }
   }
 }
 </script>
 
-<style>
+<style> 
 #aboutContainer {
-  margin-left: 30px;
+  padding-left: 45px;
+  padding-right: 45px;
+}
+
+.mobileContainer {
+  text-align: center;
 }
 
 .profilePicture {
   border-radius: 100%;
 }
 
-.aboutScott {
-  font-size: 32px;
+.aboutHeader {
+  font-size: 38px;
+  font-weight: 500;
+  padding-bottom: 10px;
 }
 
-.downloadButton {
+.aboutHeaderMobile {
   padding-top: 10px;
-  padding-left: 10px;
-  position: absolute;
-  z-index: 1001;
-  display: flex;
+  font-size: 32px;
+  font-weight: 500;
+}
+
+.skillsTitle {
+  padding-top: 16px;
+  padding-bottom: 10px;
+  font-size: 30px;
+  font-weight: 500;
 }
 </style>
