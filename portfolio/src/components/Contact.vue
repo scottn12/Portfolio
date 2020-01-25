@@ -99,27 +99,22 @@ export default {
   }),
   methods: {
     send() {
-      // Get Form Data
-      let email = this.email;
-      let subject = this.subject;
-      let message = this.message;
       // Reset Values
       this.success = false;
       this.error = false;
       this.errorMessage = 'An error occured sending the email. Please try again later.';
       this.loading = true;
-      this.$refs.form.reset();
       // Check if email already sent today
-      if (document.cookie) {
+      if (this.getCookie('emailSent')) {
         this.error = true;
         this.errorMessage = 'You have already sent an e-mail already today. Please try again later.';
         this.loading = false;
         return;  // no send
       }
       var data = new FormData();
-      data.append('email', email);
-      data.append('subject', subject);
-      data.append('message', message);
+      data.append('email', this.email);
+      data.append('subject', this.subject);
+      data.append('message', this.message);
       fetch('https://scottnorton.tech/email.php', {
         method: 'POST',
         body: data
@@ -129,6 +124,7 @@ export default {
         this.loading = false;
         if (response.success) {
           this.success = true;
+          this.$refs.form.reset();
           document.cookie = 'emailSent=true; expires=(datetime + 1day)';  // Mark email sent
         }
         else {
@@ -140,6 +136,25 @@ export default {
         this.error = true;
         this.loading = false;
       });
+    },
+    getCookie(name) {
+      var dc = document.cookie;
+      var prefix = name + "=";
+      var begin = dc.indexOf("; " + prefix);
+      if (begin == -1) {
+        begin = dc.indexOf(prefix);
+        if (begin != 0) return null;
+      }
+      else {
+        begin += 2;
+        var end = document.cookie.indexOf(";", begin);
+        if (end == -1) {
+        end = dc.length;
+        }
+      }
+      // because unescape has been deprecated, replaced with decodeURI
+      //return unescape(dc.substring(begin + prefix.length, end));
+      return decodeURI(dc.substring(begin + prefix.length, end));
     }
   }
 }

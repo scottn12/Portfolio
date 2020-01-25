@@ -8,7 +8,7 @@
         Full Resumé
       </v-btn>
     </div>
-    <!-- Mobile Desktop Button -->
+    <!-- Mobile Resume Button -->
     <div v-if="$vuetify.breakpoint.xsOnly" style="text-align: left; margin-left: 4px;">
       <v-btn class="mx-2" color="#28313b" fab dark x-large @click="resumeOpen=true;">
         <v-icon>mdi-file-document</v-icon>
