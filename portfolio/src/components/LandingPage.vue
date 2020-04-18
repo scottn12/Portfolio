@@ -13,14 +13,14 @@
         </transition>
         <transition name="slideLeft">
           <div class="icons" v-if="showIcons">
-            <v-btn icon href="https://github.com/scottn12" target="_blank" style="margin-right: 10px;"><v-icon x-large color="white">mdi-github-circle</v-icon></v-btn>
-            <v-btn icon href="https://www.linkedin.com/in/scott-norton/" target="_blank"><v-icon x-large color="white">mdi-linkedin-box</v-icon></v-btn>
+            <v-btn icon href="https://github.com/scottn12" target="_blank" style="margin-right: 10px;"><v-icon x-large color="white">mdi-github</v-icon></v-btn>
+            <v-btn icon href="https://www.linkedin.com/in/scott-norton/" target="_blank"><v-icon x-large color="white">mdi-linkedin</v-icon></v-btn>
           </div>
         </transition>
         <div class="iconHolder" v-if="!showIcons">
           <div style="visibility: hidden;" class="icons" v-if="!showIcons">
-            <v-btn icon href="https://github.com/scottn12" target="_blank" style="margin-right: 10px;"><v-icon x-large color="white">mdi-github-circle</v-icon></v-btn>
-            <v-btn icon href="https://www.linkedin.com/in/scott-norton/" target="_blank"><v-icon x-large color="white">mdi-linkedin-box</v-icon></v-btn>
+            <v-btn icon href="https://github.com/scottn12" target="_blank" style="margin-right: 10px;"><v-icon x-large color="white">mdi-github</v-icon></v-btn>
+            <v-btn icon href="https://www.linkedin.com/in/scott-norton/" target="_blank"><v-icon x-large color="white">mdi-linkedin</v-icon></v-btn>
           </div>
         </div>
         <div class="downIcons">
