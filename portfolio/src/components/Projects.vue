@@ -39,7 +39,7 @@ export default {
         {      
           title: 'Slippi Stats Online',
           img: 'Slippi.png',
-          link: 'https://github.com/scottn12/ScottBot',
+          link: 'https://slippistats.online',
           description: 'Website designed to provide a way to analyze a large number of Slippi Online games at once.'
         },
         {
