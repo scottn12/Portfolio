@@ -10,15 +10,15 @@
   "dependencies": {
     "babel-runtime": "^6.26.0",
     "core-js": "^3.3.2",
+    "serialize-javascript": "^5.0.1",
     "vue": "^2.6.10",
     "vue-pdf": "^4.0.7",
-    "vuetify": "^2.1.0",
-    "serialize-javascript": ">=2.1.1"
+    "vuetify": "^2.1.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.0.0",
     "@vue/cli-plugin-eslint": "^4.0.0",
-    "@vue/cli-service": "^4.0.0",
+    "@vue/cli-service": "^4.5.7",
     "babel-eslint": "^10.0.3",
     "css-loader": "^3.2.0",
     "eslint": "^5.16.0",
